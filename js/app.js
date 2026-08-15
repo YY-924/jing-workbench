@@ -15,6 +15,9 @@
         if (mod === 'cet4') W.CET4.render();
         if (mod === 'tasks') W.Tasks.render();
         if (mod === 'pomo') W.Pomodoro.render();
+        if (mod === 'ledger') W.Ledger.render();
+        if (mod === 'countdown') W.Countdown.render();
+        if (mod === 'notes') W.Notes.render();
       };
     });
   }

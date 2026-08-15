@@ -43,6 +43,18 @@
     const vs = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
     return vs.find(v => /^en[-_]US/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null;
   }
+  function warmVoices() {
+    if (!('speechSynthesis' in window)) return;
+    // 预先触发一次 getVoices(),让浏览器尽早加载语音列表
+    window.speechSynthesis.getVoices();
+    if (!voicesReady) {
+      voicesReady = true;
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = null;
+      };
+    }
+  }
   function speak(word) {
     if (!('speechSynthesis' in window)) { W.UI.AudioMgr.ding(); return; }
     try {
@@ -52,16 +64,15 @@
       u.lang = 'en-US'; u.rate = 0.85; u.pitch = 1;
       const v = enVoice();
       if (v) u.voice = v;
+      let started = false;
+      u.onstart = () => { started = true; };
       u.onerror = e => {
         if (e && (e.error === 'canceled' || e.error === 'interrupted')) return;
-        W.UI.AudioMgr.ding();
+        if (!started) W.UI.AudioMgr.ding();
       };
-      if (!voicesReady) {
-        voicesReady = true;
-        speechSynthesis.onvoiceschanged = () => { speechSynthesis.onvoiceschanged = null; };
-      }
-      // 小延迟避免 cancel 竞态导致发不出声
-      setTimeout(() => speechSynthesis.speak(u), 60);
+      // 必须同步调用 speak(),延迟会脱离用户点击的音频许可上下文导致无声
+      speechSynthesis.speak(u);
+      setTimeout(() => { if (!started) { try { speechSynthesis.cancel(); } catch (e) {} W.UI.AudioMgr.ding(); } }, 1800);
     } catch (e) { W.UI.AudioMgr.ding(); }
   }
 
@@ -403,6 +414,7 @@
     const v = view();
     if (v) { v.onclick = onClick; v.oninput = null; }
     st.libFilter = st.libFilter || null;
+    warmVoices();
     render();
   }
 

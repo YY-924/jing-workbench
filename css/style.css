@@ -87,9 +87,9 @@ input, select { font-family: inherit; }
 .right-panel { flex: 1; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .learn-tabs { display: flex; border-bottom: 1px solid var(--border); flex: none; }
 .tab-btn {
-  flex: 1; padding: 12px 4px; border: none; background: transparent; color: var(--text-sub);
-  font-size: 14px; font-weight: 600; border-bottom: 3px solid transparent;
-  transition: color .2s;
+  flex: 1; padding: 11px 2px; border: none; background: transparent; color: var(--text-sub);
+  font-size: 13px; font-weight: 600; border-bottom: 3px solid transparent;
+  transition: color .2s; white-space: nowrap;
 }
 .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 .learn-body { flex: 1; overflow-y: auto; padding: 14px; }
@@ -344,6 +344,84 @@ input, select { font-family: inherit; }
 .pomo-settings input { width: 76px; }
 .pomo-custom { display: flex; gap: 8px; align-items: center; justify-content: center; }
 .pomo-today { text-align: center; color: var(--text-sub); font-size: 13px; margin-top: 12px; }
+
+/* ---------- 记账模块 ---------- */
+.chip-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.ledger-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.ledger-month { font-weight: 700; font-size: 15px; }
+.ledger-sum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+.ledger-sum-card { background: var(--bg-soft); border-radius: 12px; padding: 10px; text-align: center; }
+.ledger-sum-lbl { font-size: 11px; color: var(--text-sub); }
+.ledger-sum-val { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.ledger-sum-val.in { color: #2e9e5b; }
+.ledger-sum-val.out { color: #d9534f; }
+.ledger-form { margin-bottom: 12px; }
+.ledger-type-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.ledger-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+.ledger-cat {
+  border: 1px solid var(--border); background: var(--card); border-radius: 10px; padding: 8px 4px;
+  font-size: 20px; display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--text-sub);
+}
+.ledger-cat span { font-size: 11px; }
+.ledger-cat.active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+.ledger-inputs { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.ledger-amount { width: 110px; border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 10px; padding: 10px; font-size: 15px; }
+.ledger-amount:focus { border-color: var(--accent); outline: none; }
+.ledger-date { border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 10px; padding: 9px; font-size: 14px; }
+.ledger-cat-hint { font-size: 12px; color: var(--text-sub); margin-top: 8px; }
+.card-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.ledger-list { display: flex; flex-direction: column; }
+.ledger-item { display: flex; align-items: center; gap: 10px; padding: 10px 4px; border-bottom: 1px dashed var(--border); }
+.ledger-item .ledger-icon { font-size: 22px; width: 28px; text-align: center; flex: none; }
+.ledger-item .ledger-mid { flex: 1; min-width: 0; }
+.ledger-item .ledger-name { font-size: 14px; }
+.ledger-item .ledger-date-txt { font-size: 11px; color: var(--text-sub); }
+.ledger-item .ledger-amt { font-weight: 800; font-variant-numeric: tabular-nums; }
+.ledger-item .ledger-amt.in { color: #2e9e5b; }
+.ledger-item .ledger-amt.out { color: #d9534f; }
+.ledger-item .del { border: none; background: transparent; color: var(--text-sub); font-size: 15px; }
+.ledger-item .del:hover { color: var(--danger); }
+
+/* ---------- 倒计时模块 ---------- */
+.cd-form { margin-bottom: 12px; }
+.cd-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+.cd-icons { display: flex; gap: 6px; }
+.cd-icon { width: 40px; height: 40px; font-size: 20px; border: 1px solid var(--border); background: var(--card); border-radius: 10px; }
+.cd-icon.active { border-color: var(--accent); background: var(--accent-soft); }
+.cd-date { border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 10px; padding: 9px; font-size: 14px; flex: 1; min-width: 140px; }
+.cd-hero {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: #fff;
+  border-radius: 14px; padding: 16px; text-align: center; margin-bottom: 12px;
+}
+.cd-hero-icon { font-size: 34px; }
+.cd-hero-title { font-size: 15px; font-weight: 700; margin-top: 4px; }
+.cd-hero-days { font-size: 46px; font-weight: 900; line-height: 1.1; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.cd-hero-unit { font-size: 12px; opacity: .85; }
+.cd-hero-date { font-size: 12px; opacity: .85; margin-top: 4px; }
+.cd-list { display: flex; flex-direction: column; }
+.cd-item { display: flex; align-items: center; gap: 10px; padding: 11px 4px; border-bottom: 1px dashed var(--border); }
+.cd-item.past { opacity: .55; }
+.cd-item-icon { font-size: 22px; width: 30px; text-align: center; flex: none; }
+.cd-item-mid { flex: 1; min-width: 0; }
+.cd-item-title { font-size: 14px; font-weight: 600; }
+.cd-item-date { font-size: 11px; color: var(--text-sub); }
+.cd-item-days { font-size: 13px; font-weight: 700; color: var(--accent-dark); }
+.cd-item .del { border: none; background: transparent; color: var(--text-sub); font-size: 15px; }
+.cd-item .del:hover { color: var(--danger); }
+
+/* ---------- 随心记模块 ---------- */
+.note-form { margin-bottom: 12px; }
+.note-form-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.note-content { width: 100%; border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 10px; padding: 10px; font-size: 15px; outline: none; margin: 8px 0; resize: vertical; font-family: inherit; }
+.note-content:focus { border-color: var(--accent); }
+.note-list { display: flex; flex-direction: column; gap: 10px; }
+.note-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+.note-item.editing { border-color: var(--accent); }
+.note-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.note-title { font-size: 15px; font-weight: 700; }
+.note-time { font-size: 11px; color: var(--text-sub); flex: none; }
+.note-body { font-size: 14px; color: var(--text-sub); margin-top: 4px; white-space: pre-wrap; word-break: break-word; }
+.note-ops { display: flex; gap: 6px; justify-content: flex-end; margin-top: 8px; }
 
 /* ---------- 商城 / 背包 ---------- */
 .shop-tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }

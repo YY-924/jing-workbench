@@ -8,74 +8,82 @@
 
   function wearable(w) {
     let s = '';
-    if (w.hat === 'hat-red') s += '<path d="M44 56 q18 -22 36 0 l8 9 h-52 z" fill="#c04343"/>';
-    if (w.hat === 'crown') s += '<path d="M42 58 l8 -20 7 14 5 -18 7 18 7 -14 8 20 z" fill="#f2c94c" stroke="#c8901f" stroke-width="1.5"/>';
-    if (w.hat === 'cap-blue') s += '<path d="M42 58 q0 -22 36 -22 q36 0 36 22 q-36 -8 -72 0 z" fill="#3f6fb5"/><circle cx="60" cy="34" r="5" fill="#fff"/>';
-    if (w.scarf === 'scarf-yellow') s += '<path d="M42 98 q20 12 40 0 q-4 14 -20 18 q-18 -4 -20 -18 z" fill="#f5c542"/><path d="M62 110 q8 16 0 30 l-12 2 q4 -18 -2 -30 z" fill="#e0a92f"/>';
-    if (w.scarf === 'scarf-red') s += '<path d="M42 98 q20 12 40 0 q-4 14 -20 18 q-18 -4 -20 -18 z" fill="#c94f4f"/><path d="M62 110 q8 16 0 30 l-12 2 q4 -18 -2 -30 z" fill="#a83a3a"/>';
-    if (w.bow === 'bow-pink') s += '<path d="M82 50 q12 -10 24 0 q-12 10 -24 0 z M82 50 q12 10 24 0 q-12 -10 -24 0 z" fill="#e88aa0"/><circle cx="94" cy="50" r="3.5" fill="#d56a86"/>';
-    if (w.bow === 'bow-blue') s += '<path d="M82 50 q12 -10 24 0 q-12 10 -24 0 z M82 50 q12 10 24 0 q-12 -10 -24 0 z" fill="#5b8dd6"/><circle cx="94" cy="50" r="3.5" fill="#3f6fb5"/>';
-    if (w.glasses === 'goggle') s += '<circle cx="50" cy="76" r="8.5" fill="rgba(0,0,0,.15)" stroke="#2b2b2b" stroke-width="3"/><circle cx="72" cy="76" r="8.5" fill="rgba(0,0,0,.15)" stroke="#2b2b2b" stroke-width="3"/><path d="M58.5 76 h3 M80.5 76 h9" stroke="#2b2b2b" stroke-width="3"/>';
-    if (w.glasses === 'glasses-round') s += '<circle cx="49" cy="75" r="9" fill="rgba(0,0,0,.12)" stroke="#c8901f" stroke-width="2.5"/><circle cx="71" cy="75" r="9" fill="rgba(0,0,0,.12)" stroke="#c8901f" stroke-width="2.5"/><path d="M58 75 h3 M80 75 h8" stroke="#c8901f" stroke-width="2.5"/>';
-    if (w.coat === 'coat-brown') s += '<path d="M44 106 q36 14 72 0 q-2 24 -36 28 q-34 -2 -36 -28 z" fill="#8a5a2b"/>';
-    if (w.coat === 'coat-denim') s += '<path d="M44 106 q36 14 72 0 q-2 24 -36 28 q-34 -2 -36 -28 z" fill="#4a6fa5"/><path d="M66 114 l5 12 M78 114 l-5 12" stroke="#3a5a8a" stroke-width="4" stroke-linecap="round" fill="none"/>';
-    if (w.coat === 'coat-stripe') s += '<path d="M44 106 q36 14 72 0 q-2 24 -36 28 q-34 -2 -36 -28 z" fill="#ece7da"/><path d="M44 118 q36 12 72 0" stroke="#7d5ba6" stroke-width="5" fill="none"/><path d="M45 128 q34 12 70 0" stroke="#7d5ba6" stroke-width="5" fill="none"/>';
-    if (w.neck === 'collar') s += '<path d="M44 103 q36 16 72 0 l-4 8 q-32 12 -64 0 z" fill="#c0392b"/><circle cx="80" cy="113" r="5.5" fill="#f2c94c" stroke="#c8901f" stroke-width="1.5"/><circle cx="80" cy="114" r="1.8" fill="#c8901f"/>';
+    if (w.hat === 'hat-red') s += '<path d="M48 60 q0 -24 32 -24 q32 0 32 24 q-32 -9 -64 0 z" fill="#c04343"/><path d="M46 58 h68 l-2 7 h-64 z" fill="#a83232"/><circle cx="80" cy="31" r="6" fill="#e07878"/>';
+    if (w.hat === 'crown') s += '<path d="M50 60 L56 44 L62 55 L68 41 L74 55 L80 41 L86 55 L92 41 L98 55 L104 44 L110 60 Z" fill="#f2c94c" stroke="#c8901f" stroke-width="1.5"/>';
+    if (w.hat === 'cap-blue') s += '<path d="M48 60 q0 -22 32 -22 q32 0 32 22 q-32 -9 -64 0 z" fill="#3f6fb5"/><circle cx="80" cy="33" r="5" fill="#fff"/><path d="M46 58 q34 8 68 0 l2 7 q-36 9 -72 0 z" fill="#2e5690"/>';
+    if (w.scarf === 'scarf-yellow') s += '<path d="M48 100 q32 14 64 0 l-2 10 q-30 12 -60 0 z" fill="#f5c542"/><path d="M80 112 q6 16 0 28 l-14 2 q6 -18 -2 -30 z" fill="#e0a92f"/>';
+    if (w.scarf === 'scarf-red') s += '<path d="M48 100 q32 14 64 0 l-2 10 q-30 12 -60 0 z" fill="#c94f4f"/><path d="M80 112 q6 16 0 28 l-14 2 q6 -18 -2 -30 z" fill="#a83a3a"/>';
+    if (w.bow === 'bow-pink') s += '<path d="M88 52 q12 -11 24 0 q-12 11 -24 0 z M88 52 q12 11 24 0 q-12 -11 -24 0 z" fill="#e88aa0"/><circle cx="100" cy="52" r="3.5" fill="#d56a86"/>';
+    if (w.bow === 'bow-blue') s += '<path d="M88 52 q12 -11 24 0 q-12 11 -24 0 z M88 52 q12 11 24 0 q-12 -11 -24 0 z" fill="#5b8dd6"/><circle cx="100" cy="52" r="3.5" fill="#3f6fb5"/>';
+    if (w.glasses === 'goggle') s += '<circle cx="63" cy="78" r="9.5" fill="rgba(0,0,0,.15)" stroke="#2b2b2b" stroke-width="3"/><circle cx="97" cy="78" r="9.5" fill="rgba(0,0,0,.15)" stroke="#2b2b2b" stroke-width="3"/><path d="M72.5 78 h3 M101.5 78 h8 M53.5 78 h-9 M106.5 78 h9" stroke="#2b2b2b" stroke-width="3"/>';
+    if (w.glasses === 'glasses-round') s += '<circle cx="63" cy="78" r="9.5" fill="rgba(0,0,0,.12)" stroke="#c8901f" stroke-width="2.5"/><circle cx="97" cy="78" r="9.5" fill="rgba(0,0,0,.12)" stroke="#c8901f" stroke-width="2.5"/><path d="M72.5 78 h3 M101.5 78 h8 M53.5 78 h-9 M106.5 78 h9" stroke="#c8901f" stroke-width="2.5"/>';
+    if (w.coat === 'coat-brown') s += '<path d="M42 98 q38 12 76 0 q-2 26 -38 30 q-36 -2 -38 -30 z" fill="#8a5a2b"/>';
+    if (w.coat === 'coat-denim') s += '<path d="M42 98 q38 12 76 0 q-2 26 -38 30 q-36 -2 -38 -30 z" fill="#4a6fa5"/><path d="M66 116 l5 12 M82 116 l-5 12" stroke="#3a5a8a" stroke-width="4" stroke-linecap="round" fill="none"/>';
+    if (w.coat === 'coat-stripe') s += '<path d="M42 98 q38 12 76 0 q-2 26 -38 30 q-36 -2 -38 -30 z" fill="#ece7da"/><path d="M42 116 q38 12 76 0" stroke="#7d5ba6" stroke-width="5" fill="none"/><path d="M44 128 q36 10 72 0" stroke="#7d5ba6" stroke-width="5" fill="none"/>';
+    if (w.neck === 'collar') s += '<path d="M44 100 q36 14 72 0 l-4 9 q-32 12 -64 0 z" fill="#c0392b"/><circle cx="80" cy="113" r="5.5" fill="#f2c94c" stroke="#c8901f" stroke-width="1.5"/><circle cx="80" cy="114" r="1.8" fill="#c8901f"/>';
     return s;
   }
 
   function svgPet() {
     const w = D().shop.worn || {};
-    const black = '#2a1f18', white = '#fbf8f0', tan = '#d89a4e', nose = '#221a14';
+    const black = '#241a14', white = '#fdf8ef', tan = '#d69a4e', nose = '#17100b', paw = '#f2a6ac';
     return '<svg viewBox="0 0 160 160" width="160" height="160">' +
-      // 后腿(白袜子, 藏在身体后)
+      // 后腿(白袜套, 藏在身体后)
       '<g class="legs">' +
-      '<ellipse cx="90" cy="144" rx="11" ry="13" fill="' + black + '"/>' +
-      '<ellipse cx="90" cy="150" rx="9" ry="8" fill="' + white + '"/>' +
-      '<ellipse cx="102" cy="146" rx="10" ry="12" fill="' + black + '"/>' +
-      '<ellipse cx="102" cy="151" rx="8" ry="7" fill="' + white + '"/>' +
+      '<ellipse cx="56" cy="138" rx="11" ry="14" fill="' + black + '"/>' +
+      '<ellipse cx="56" cy="145" rx="9" ry="7" fill="' + white + '"/>' +
+      '<ellipse cx="104" cy="138" rx="11" ry="14" fill="' + black + '"/>' +
+      '<ellipse cx="104" cy="145" rx="9" ry="7" fill="' + white + '"/>' +
       '</g>' +
-      // 尾巴
-      '<g class="tail"><path style="transform-origin:116px 104px" d="M116 104 q26 -6 18 -38" stroke="' + black + '" stroke-width="13" stroke-linecap="round" fill="none"/></g>' +
+      // 尾巴(粗绒尾)
+      '<g class="tail"><path style="transform-origin:118px 100px" d="M118 100 q26 -6 16 -36" stroke="' + black + '" stroke-width="13" stroke-linecap="round" fill="none"/></g>' +
       // 身体: 黑色圆润躯干 + 白色胸毛
       '<g class="body">' +
-      '<path d="M42 118 q0 -28 36 -28 q36 0 36 28 q0 30 -36 30 q-36 0 -36 -30 z" fill="' + black + '"/>' +
-      '<path d="M56 110 q0 -18 24 -18 q24 0 24 18 q0 24 -24 24 q-24 0 -24 -24 z" fill="' + white + '"/>' +
+      '<ellipse cx="80" cy="114" rx="40" ry="30" fill="' + black + '"/>' +
+      '<ellipse cx="80" cy="106" rx="23" ry="16" fill="' + white + '"/>' +
       '</g>' +
-      wearable(w) +
       // 头: 圆脸 + 白额纹 + 白嘴 + 棕色眉毛/脸颊 + 鼻子嘴巴舌头
       '<g class="head">' +
-      '<path d="M60 42 q22 -4 30 9 q11 11 3 24 q-5 13 -33 13 q-28 0 -33 -13 q-8 -13 3 -24 q8 -13 30 -9 z" fill="' + black + '"/>' +
-      '<path d="M60 46 q8 -2 10 7 q2 12 -4 20 q-3 5 -6 5 q-3 0 -6 -5 q-6 -8 -4 -20 q2 -9 10 -7 z" fill="' + white + '"/>' +
-      '<ellipse cx="60" cy="92" rx="21" ry="14" fill="' + white + '"/>' +
-      '<ellipse cx="44" cy="64" rx="6.5" ry="4.5" fill="' + tan + '"/>' +
-      '<ellipse cx="76" cy="64" rx="6.5" ry="4.5" fill="' + tan + '"/>' +
-      '<ellipse cx="37" cy="86" rx="6" ry="5" fill="' + tan + '"/>' +
-      '<ellipse cx="83" cy="86" rx="6" ry="5" fill="' + tan + '"/>' +
-      '<ellipse cx="40" cy="79" rx="4.5" ry="3" fill="rgba(242,139,139,.5)"/>' +
-      '<ellipse cx="80" cy="79" rx="4.5" ry="3" fill="rgba(242,139,139,.5)"/>' +
-      '<path d="M56 84 q4 -5 8 0 q2 4 -4 6 q-4 -2 -4 -6 z" fill="' + nose + '"/>' +
-      '<path d="M60 91 q1 6 8 6" stroke="' + nose + '" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
-      '<path d="M66 97 q2 6 -1 8 q-5 3 -6 -5 q3 -4 7 -3 z" fill="#f28b8b"/>' +
+      '<ellipse cx="80" cy="74" rx="37" ry="34" fill="' + black + '"/>' +
+      '<path d="M80 44 q9 18 4 30 q-3 12 -4 12 q-1 0 -4 -12 q-5 -12 4 -30 z" fill="' + white + '"/>' +
+      '<ellipse cx="80" cy="95" rx="21" ry="14" fill="' + white + '"/>' +
+      '<ellipse cx="62" cy="62" rx="6" ry="4.5" fill="' + tan + '"/>' +
+      '<ellipse cx="98" cy="62" rx="6" ry="4.5" fill="' + tan + '"/>' +
+      '<ellipse cx="47" cy="90" rx="7" ry="5.5" fill="' + tan + '"/>' +
+      '<ellipse cx="113" cy="90" rx="7" ry="5.5" fill="' + tan + '"/>' +
+      '<ellipse cx="50" cy="84" rx="4.5" ry="3.2" fill="rgba(247,143,150,.5)"/>' +
+      '<ellipse cx="110" cy="84" rx="4.5" ry="3.2" fill="rgba(247,143,150,.5)"/>' +
+      '<path d="M74 88 q6 -7 12 0 q0 5 -6 7 q-6 -2 -6 -7 z" fill="' + nose + '"/>' +
+      '<path d="M80 95 q0 8 7 7" stroke="' + nose + '" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
+      '<path d="M86 100 q2 7 -1 9 q-5 3 -7 -4 q3 -4 8 -5 z" fill="#f28b8b"/>' +
       '</g>' +
-      // 耳朵(垂耳)
+      // 耳朵(软垂耳)
       '<g class="ears">' +
-      '<path class="ear" d="M33 58 q-18 -18 -2 -30 q14 -4 19 10 z" fill="#1b130d"/>' +
-      '<path class="ear" d="M87 58 q18 -18 2 -30 q-14 -4 -19 10 z" fill="#1b130d"/>' +
+      '<path class="ear" d="M50 56 q-22 -22 -4 -32 q15 -5 18 10 z" fill="#17100b"/>' +
+      '<path class="ear" d="M110 56 q22 -22 4 -32 q-15 -5 -18 10 z" fill="#17100b"/>' +
       '</g>' +
-      // 眼睛(大而圆)
+      // 眼睛(大而亮)
       '<g class="eyes">' +
-      '<circle class="eye" cx="49" cy="75" r="6" fill="' + nose + '"/>' +
-      '<circle class="eye" cx="71" cy="75" r="6" fill="' + nose + '"/>' +
-      '<circle cx="51" cy="73" r="2.1" fill="#fff"/>' +
-      '<circle cx="73" cy="73" r="2.1" fill="#fff"/>' +
+      '<circle class="eye" cx="63" cy="78" r="7.5" fill="' + nose + '"/>' +
+      '<circle class="eye" cx="97" cy="78" r="7.5" fill="' + nose + '"/>' +
+      '<circle cx="65.6" cy="75.4" r="2.5" fill="#fff"/>' +
+      '<circle cx="99.6" cy="75.4" r="2.5" fill="#fff"/>' +
+      '<circle cx="60.5" cy="80.5" r="1.1" fill="#fff"/>' +
+      '<circle cx="94.5" cy="80.5" r="1.1" fill="#fff"/>' +
       '</g>' +
-      // 前腿(白袜子, 在身体前)
+      wearable(w) +
+      // 前腿(白袜套 + 粉爪垫, 在身体前)
       '<g class="front-legs">' +
-      '<ellipse cx="58" cy="143" rx="11" ry="15" fill="' + black + '"/>' +
-      '<ellipse cx="58" cy="150" rx="9" ry="8" fill="' + white + '"/>' +
-      '<ellipse cx="78" cy="145" rx="11" ry="15" fill="' + black + '"/>' +
-      '<ellipse cx="78" cy="152" rx="9" ry="8" fill="' + white + '"/>' +
+      '<ellipse cx="70" cy="138" rx="11" ry="15" fill="' + black + '"/>' +
+      '<ellipse cx="70" cy="145" rx="9" ry="8" fill="' + white + '"/>' +
+      '<ellipse cx="90" cy="138" rx="11" ry="15" fill="' + black + '"/>' +
+      '<ellipse cx="90" cy="145" rx="9" ry="8" fill="' + white + '"/>' +
+      '<ellipse cx="66" cy="147" rx="2.6" ry="2" fill="' + paw + '"/>' +
+      '<ellipse cx="70" cy="149" rx="2.6" ry="2" fill="' + paw + '"/>' +
+      '<ellipse cx="74" cy="147" rx="2.6" ry="2" fill="' + paw + '"/>' +
+      '<ellipse cx="86" cy="147" rx="2.6" ry="2" fill="' + paw + '"/>' +
+      '<ellipse cx="90" cy="149" rx="2.6" ry="2" fill="' + paw + '"/>' +
+      '<ellipse cx="94" cy="147" rx="2.6" ry="2" fill="' + paw + '"/>' +
       '</g>' +
       '</svg>';
   }
@@ -325,5 +333,5 @@
     window.addEventListener('resize', () => { const st = $('#pet-stage'); if (st) st.style.setProperty('--stage-w', Math.max(60, st.clientWidth - 30) + 'px'); });
   }
 
-  W.Pet = { init, refresh, refreshStats, refreshStage: renderStage, renderExam, checkLevelUp, celebrate, checkSignin, applyDecay };
+  W.Pet = { init, refresh, refreshStats, refreshStage: renderStage, renderExam, checkLevelUp, celebrate, checkSignin, applyDecay, svg: svgPet, wearable };
 })();

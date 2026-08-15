@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🐕 宠物外观预览</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #f5efe4; margin: 0; padding: 20px; }
+  h1 { font-size: 18px; color: #5a4632; margin: 0 0 4px; }
+  .sub { color: #8a7a66; font-size: 13px; margin-bottom: 16px; }
+  #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .box { background: #fff; border: 1px solid #e2d6c2; border-radius: 14px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+  .box h3 { margin: 0 0 10px; font-size: 13px; color: #6b5946; font-weight: 600; }
+  .box svg { width: 150px; height: 150px; }
+  .stage { border-radius: 12px; background: linear-gradient(to bottom, #e8f4f4 0 50%, #cfe3b8 78%, #b7d6a4 100%); padding: 8px 0; }
+</style>
+</head>
+<body>
+<h1>🐕 伯恩山宠物预览(新版)</h1>
+<div class="sub">每种外观组合 + 基础形象,供你审核</div>
+<div id="grid"></div>
+<script>
+window.Workbench = window.Workbench || {};
+window.Workbench.$ = s => document.querySelector(s);
+window.Workbench.el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+window.Workbench.esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+</script>
+<script src="js/data.js"></script>
+<script src="js/pet.js"></script>
+<script>
+function show(title, worn) {
+  const d = window.Workbench.Data.get();
+  d.shop = d.shop || {}; d.shop.worn = worn;
+  const svg = window.Workbench.Pet.svg();
+  const box = document.createElement('div');
+  box.className = 'box';
+  box.innerHTML = '<h3>' + title + '</h3><div class="stage">' + svg + '</div>';
+  document.getElementById('grid').appendChild(box);
+}
+show('默认形象', {});
+show('红帽子', { hat: 'hat-red' });
+show('棒球帽', { hat: 'cap-blue' });
+show('王冠', { hat: 'crown' });
+show('红围巾', { scarf: 'scarf-red' });
+show('黄围巾', { scarf: 'scarf-yellow' });
+show('粉蝴蝶结', { bow: 'bow-pink' });
+show('蓝蝴蝶结', { bow: 'bow-blue' });
+show('护目镜', { glasses: 'goggle' });
+show('金框眼镜', { glasses: 'glasses-round' });
+show('棕外套', { coat: 'coat-brown' });
+show('牛仔衣', { coat: 'coat-denim' });
+show('条纹衣', { coat: 'coat-stripe' });
+show('铃铛项圈', { neck: 'collar' });
+show('全副武装', { hat: 'cap-blue', scarf: 'scarf-red', glasses: 'glasses-round', bow: 'bow-blue', coat: 'coat-stripe', neck: 'collar' });
+</script>
+</body>
+</html>

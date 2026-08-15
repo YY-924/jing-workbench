@@ -43,7 +43,10 @@
       points: 0,
       achievements: { unlocked: {} },
       signin: { lastDate: null, streak: 0, totalDays: 0 },
-      weekly: { week: null, words: 0, focus: 0, tasks: 0, claimed: false }
+      weekly: { week: null, words: 0, focus: 0, tasks: 0, claimed: false },
+      ledger: { records: [] },
+      countdowns: { list: [] },
+      notes: { list: [] }
     };
   }
 
