@@ -1,4 +1,4 @@
-const CACHE = 'jing-workbench-v3';
+const CACHE = 'jing-workbench-v4';
 const ASSETS = [
   './', './index.html',
   './css/style.css',
@@ -17,12 +17,25 @@ self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', e => {
-  if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request).then(hit =>
-      hit || fetch(e.request).then(res => {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  // 页面导航:网络优先,确保每次打开都拿到最新版本
+  if (req.mode === 'navigate') {
+    e.respondWith(
+      fetch(req).then(res => {
         const copy = res.clone();
-        caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => { });
+        caches.open(CACHE).then(c => c.put('./index.html', copy)).catch(() => { });
+        return res;
+      }).catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+  // 静态资源:缓存优先,离线可用
+  e.respondWith(
+    caches.match(req).then(hit =>
+      hit || fetch(req).then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(req, copy)).catch(() => { });
         return res;
       }).catch(() => caches.match('./index.html'))
     )
