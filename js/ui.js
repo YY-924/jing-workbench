@@ -101,6 +101,60 @@
       });
     },
 
+    // 合成小狗叫声:低频音高快速下滑 + 气音,像"汪"
+    _barkBurst(t, vol) {
+      const c = actx;
+      const o = c.createOscillator();
+      o.type = 'triangle';
+      o.frequency.setValueAtTime(330, t);
+      o.frequency.exponentialRampToValueAtTime(110, t + 0.15);
+      const g = c.createGain();
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(vol, t + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.19);
+      o.connect(g); g.connect(c.destination);
+      o.start(t); o.stop(t + 0.21);
+    },
+    bark(repeats) {
+      if (!Workbench.Data.get().settings.soundOn) return;
+      this.ensure();
+      const c = actx, t0 = c.currentTime;
+      const n = repeats || 1;
+      for (let k = 0; k < n; k++) this._barkBurst(t0 + k * 0.18, 0.4);
+    },
+    woof() {
+      if (!Workbench.Data.get().settings.soundOn) return;
+      this.ensure();
+      const c = actx, t = c.currentTime;
+      const o = c.createOscillator();
+      o.type = 'triangle';
+      o.frequency.setValueAtTime(300, t);
+      o.frequency.exponentialRampToValueAtTime(140, t + 0.22);
+      const g = c.createGain();
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.3, t + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+      o.connect(g); g.connect(c.destination);
+      o.start(t); o.stop(t + 0.32);
+    },
+    splash() {
+      if (!Workbench.Data.get().settings.soundOn) return;
+      this.ensure();
+      const c = actx, t = c.currentTime;
+      const nb = c.createBuffer(1, c.sampleRate * 0.4, c.sampleRate);
+      const nd = nb.getChannelData(0);
+      for (let i = 0; i < nd.length; i++) nd[i] = (Math.random() * 2 - 1) * Math.sin(i / nd.length * Math.PI);
+      const src = c.createBufferSource(); src.buffer = nb;
+      const bp = c.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 2;
+      bp.frequency.setValueAtTime(1000, t);
+      bp.frequency.exponentialRampToValueAtTime(280, t + 0.4);
+      const g = c.createGain();
+      g.gain.setValueAtTime(0.35, t);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.4);
+      src.connect(bp); bp.connect(g); g.connect(c.destination);
+      src.start(t); src.stop(t + 0.42);
+    },
+
     noisePlay(type) {
       this.noiseStop();
       const st = Workbench.Data.get().settings.whiteNoise;

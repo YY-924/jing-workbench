@@ -12,14 +12,32 @@
     { id: 'goggle', cat: 'clothing', name: '酷酷墨镜', icon: '🕶️', price: 80, desc: '气场全开', type: 'wear', slot: 'glasses' },
     { id: 'bow-pink', cat: 'clothing', name: '粉色蝴蝶结', icon: '🎀', price: 70, desc: '可爱值+100', type: 'wear', slot: 'bow' },
     { id: 'crown', cat: 'clothing', name: '小皇冠', icon: '👑', price: 200, desc: '5级限定', type: 'wear', slot: 'hat', lv: 5 },
+    { id: 'cap-blue', cat: 'clothing', name: '蓝色毛线帽', icon: '🧢', price: 55, desc: '冬日暖帽 + 小绒球', type: 'wear', slot: 'hat' },
+    { id: 'scarf-red', cat: 'clothing', name: '红格围巾', icon: '🧣', price: 45, desc: '软软的红格子', type: 'wear', slot: 'scarf' },
+    { id: 'glasses-round', cat: 'clothing', name: '圆框眼镜', icon: '👓', price: 70, desc: '斯文气质拉满', type: 'wear', slot: 'glasses' },
+    { id: 'bow-blue', cat: 'clothing', name: '蓝色蝴蝶结', icon: '🎀', price: 65, desc: '清爽小绅士', type: 'wear', slot: 'bow' },
+    { id: 'collar', cat: 'clothing', name: '铃铛项圈', icon: '🔔', price: 60, desc: '走起路叮当响', type: 'wear', slot: 'neck' },
+    { id: 'coat-stripe', cat: 'clothing', name: '条纹卫衣', icon: '👕', price: 110, desc: '潮酷条纹风', type: 'wear', slot: 'coat', lv: 3 },
     { id: 'kibble', cat: 'food', name: '香香狗粮', icon: '🍚', price: 15, desc: '饥饿 +40', type: 'use', effect: 'hunger', val: 40 },
     { id: 'meat', cat: 'food', name: '肉肉零食', icon: '🥩', price: 30, desc: '饥饿 +70', type: 'use', effect: 'hunger', val: 70 },
     { id: 'can', cat: 'food', name: '罐头大餐', icon: '🥫', price: 50, desc: '饥饿 +100', type: 'use', effect: 'hunger', val: 100 },
+    { id: 'fish', cat: 'food', name: '三文鱼饭', icon: '🐟', price: 22, desc: '饥饿 +55', type: 'use', effect: 'hunger', val: 55 },
+    { id: 'cheese', cat: 'food', name: '芝士块', icon: '🧀', price: 18, desc: '饥饿 +35', type: 'use', effect: 'hunger', val: 35 },
+    { id: 'dumpling', cat: 'food', name: '鲜肉水饺', icon: '🥟', price: 20, desc: '饥饿 +50', type: 'use', effect: 'hunger', val: 50 },
+    { id: 'honey', cat: 'food', name: '蜂蜜小饼', icon: '🍯', price: 16, desc: '饥饿 +30', type: 'use', effect: 'hunger', val: 30 },
     { id: 'milk-tea', cat: 'drink', name: '香草奶茶', icon: '🧋', price: 25, desc: '心情 +40', type: 'use', effect: 'mood', val: 40 },
     { id: 'juice', cat: 'drink', name: '鲜榨果汁', icon: '🧃', price: 35, desc: '心情 +70', type: 'use', effect: 'mood', val: 70 },
     { id: 'water', cat: 'drink', name: '矿泉水', icon: '💧', price: 10, desc: '心情 +20', type: 'use', effect: 'mood', val: 20 },
+    { id: 'coffee', cat: 'drink', name: '狗狗拿铁', icon: '☕', price: 20, desc: '心情 +30', type: 'use', effect: 'mood', val: 30 },
+    { id: 'smoothie', cat: 'drink', name: '草莓奶昔', icon: '🍹', price: 40, desc: '心情 +60', type: 'use', effect: 'mood', val: 60 },
+    { id: 'tea', cat: 'drink', name: '菊花茶', icon: '🍵', price: 18, desc: '心情 +25', type: 'use', effect: 'mood', val: 25 },
+    { id: 'milk', cat: 'drink', name: '热牛奶', icon: '🥛', price: 22, desc: '心情 +35', type: 'use', effect: 'mood', val: 35 },
     { id: 'shower', cat: 'clean', name: '香香沐浴露', icon: '🧴', price: 25, desc: '清洁 +60', type: 'use', effect: 'clean', val: 60 },
-    { id: 'brush', cat: 'clean', name: '顺毛梳', icon: '🪮', price: 15, desc: '清洁 +35', type: 'use', effect: 'clean', val: 35 }
+    { id: 'brush', cat: 'clean', name: '顺毛梳', icon: '🪮', price: 15, desc: '清洁 +35', type: 'use', effect: 'clean', val: 35 },
+    { id: 'shampoo', cat: 'clean', name: '蓝莓香波', icon: '🧼', price: 35, desc: '清洁 +80', type: 'use', effect: 'clean', val: 80 },
+    { id: 'towel', cat: 'clean', name: '吸水毛巾', icon: '🧻', price: 18, desc: '清洁 +40', type: 'use', effect: 'clean', val: 40 },
+    { id: 'sponge', cat: 'clean', name: '魔力海绵', icon: '🧽', price: 28, desc: '清洁 +55', type: 'use', effect: 'clean', val: 55 },
+    { id: 'dental', cat: 'clean', name: '洁牙骨', icon: '🦷', price: 15, desc: '清洁 +30', type: 'use', effect: 'clean', val: 30 }
   ];
   const CATS = [['clothing', '👗 服饰穿搭'], ['food', '🍖 食物主食'], ['drink', '🧋 饮品类'], ['clean', '🧴 清洁道具']];
 

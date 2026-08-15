@@ -36,6 +36,14 @@
     $('#set-exam-date').value = s.examDate || '';
     $('#set-pomo-len').value = s.pomodoroDefault || 25;
     $('#set-noise-vol').value = Math.round(s.whiteNoise.volume * 100);
+    if ($('#set-wordbank')) {
+      $('#set-wordbank').value = s.wordbank || 'curated';
+      $('#set-wordbank').onchange = e => {
+        s.wordbank = e.target.value; W.Data.save();
+        if (W.CET4) W.CET4.render();
+        W.UI.toast('已切换词库：' + (s.wordbank === 'full' ? '完整词库' : '精选词库'));
+      };
+    }
 
     $('#set-sound').onchange = e => { s.soundOn = e.target.checked; W.Data.save(); };
     $('#set-anim').onchange = e => { s.petAnimOn = e.target.checked; W.Data.save(); if (W.Pet) W.Pet.refresh(); };

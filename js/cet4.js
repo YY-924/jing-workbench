@@ -4,7 +4,14 @@
   const D = () => W.Data.get();
   const $ = W.$, $$ = W.$$, el = W.el, esc = W.esc;
 
-  function allWords() { return window.CET4_WORDS || []; }
+  function bankInfo() {
+    const key = D().settings.wordbank === 'full' ? 'full' : 'curated';
+    if (key === 'full' && window.CET4_WORDS_3000) {
+      return { key: 'full', name: '完整词库', words: window.CET4_WORDS_3000 };
+    }
+    return { key: 'curated', name: '精选词库', words: window.CET4_WORDS || [] };
+  }
+  function allWords() { return bankInfo().words; }
   function wordObj(w) { return allWords().find(x => x.word === w); }
 
   const st = { mode: 'browse', idx: 0, lastIdx: 0, answer: '', result: null, reviewList: [], reviewIdx: 0 };
@@ -31,11 +38,31 @@
   function favoriteList() { return D().cet4.favorites || []; }
   function isFav(w) { return favoriteList().includes(w); }
 
+  let voicesReady = false;
+  function enVoice() {
+    const vs = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    return vs.find(v => /^en[-_]US/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null;
+  }
   function speak(word) {
-    if (!('speechSynthesis' in window)) return;
-    const u = new SpeechSynthesisUtterance(word);
-    u.lang = 'en-US'; u.rate = 0.9;
-    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    if (!('speechSynthesis' in window)) { W.UI.AudioMgr.ding(); return; }
+    try {
+      speechSynthesis.cancel();
+      speechSynthesis.resume();
+      const u = new SpeechSynthesisUtterance(word);
+      u.lang = 'en-US'; u.rate = 0.85; u.pitch = 1;
+      const v = enVoice();
+      if (v) u.voice = v;
+      u.onerror = e => {
+        if (e && (e.error === 'canceled' || e.error === 'interrupted')) return;
+        W.UI.AudioMgr.ding();
+      };
+      if (!voicesReady) {
+        voicesReady = true;
+        speechSynthesis.onvoiceschanged = () => { speechSynthesis.onvoiceschanged = null; };
+      }
+      // 小延迟避免 cancel 竞态导致发不出声
+      setTimeout(() => speechSynthesis.speak(u), 60);
+    } catch (e) { W.UI.AudioMgr.ding(); }
   }
 
   function render() {
@@ -250,6 +277,12 @@
   function renderLib(m) {
     const words = allWords();
     const box = el('div', 'card');
+    const bankRow = el('div', 'dict-filter');
+    [['curated', '精选词库'], ['full', '完整词库']].forEach(([k, t]) => {
+      const b = el('button', 'chip-btn sm' + (bankInfo().key === k ? ' active' : ''), t);
+      b.dataset.action = 'bank-' + k; bankRow.appendChild(b);
+    });
+    box.appendChild(bankRow);
     const filter = el('div', 'dict-filter');
     [['all', '全部 ' + words.length], ['mastered', '已掌握'], ['unfamiliar', '不熟'], ['fav', '生词']].forEach(([f, t]) => {
       const b = el('button', 'chip-btn sm' + (st.libFilter === f ? ' active' : ''), t);
@@ -311,6 +344,14 @@
 
   function next(d) { st.result = null; st.answer = ''; st.idx = (st.idx + d + allWords().length) % allWords().length; renderMode(); }
   function setMode(m) { st.mode = m; st.result = null; st.answer = ''; st.reviewList = []; render(); }
+  function switchBank(k) {
+    if (bankInfo().key === k) return;
+    D().settings.wordbank = k;
+    W.Data.save();
+    st.idx = 0; st.result = null; st.answer = ''; st.reviewList = [];
+    render();
+    W.UI.toast('已切换为' + (k === 'full' ? '完整词库' : '精选词库'));
+  }
 
   // ---- 事件委托 ----
   function onClick(e) {
@@ -354,6 +395,8 @@
     else if (a === 'review-again') reviewNext(false);
     else if (a === 'export') exportFavs();
     else if (a === 'exam') setExam();
+    else if (a === 'bank-curated') switchBank('curated');
+    else if (a === 'bank-full') switchBank('full');
   }
 
   function init() {

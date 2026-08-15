@@ -1,10 +1,10 @@
-const CACHE = 'jing-workbench-v1';
+const CACHE = 'jing-workbench-v2';
 const ASSETS = [
   './', './index.html',
   './css/style.css',
   './js/data.js', './js/ui.js', './js/cet4.js', './js/tasks.js', './js/pomodoro.js',
   './js/shop.js', './js/achievements.js', './js/pet.js', './js/weekly.js', './js/app.js',
-  './data/cet4-words.js',
+  './data/cet4-words.js', './data/cet4-words-3000.js',
   './manifest.webmanifest',
   './assets/icons/icon-192.png', './assets/icons/icon-512.png'
 ];
