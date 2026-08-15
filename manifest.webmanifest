@@ -1,0 +1,16 @@
+{
+  "name": "静の工作台",
+  "short_name": "静の工作台",
+  "description": "四级学习 · 每日任务 · 番茄钟 · 伯恩山宠物陪伴",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f3ec",
+  "theme_color": "#b4835a",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

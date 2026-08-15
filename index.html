@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>静の工作台</title>
+<meta name="description" content="静の工作台 —— 四级学习 · 每日任务 · 番茄钟 · 伯恩山宠物陪伴">
+<meta name="theme-color" content="#f7f3ec">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">静</span>
+      <h1>静の工作台</h1>
+    </div>
+    <div class="topbar-right">
+      <div class="chip exam-chip" id="exam-chip" hidden></div>
+      <div class="chip points-chip" id="points-chip">⭐ <span id="points-num">0</span></div>
+      <button class="icon-btn" id="btn-settings" title="设置" aria-label="设置">⚙</button>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <aside class="learn-panel page" id="page-learn">
+      <nav class="learn-tabs">
+        <button class="tab-btn active" data-mod="cet4">📖 四级</button>
+        <button class="tab-btn" data-mod="tasks">✅ 任务</button>
+        <button class="tab-btn" data-mod="pomo">🍅 番茄</button>
+      </nav>
+      <div class="learn-body">
+        <section class="mod-view active" id="view-cet4"></section>
+        <section class="mod-view" id="view-tasks"></section>
+        <section class="mod-view" id="view-pomo"></section>
+      </div>
+    </aside>
+
+    <main class="right-panel">
+      <section class="pet-zone page" id="page-pet">
+        <div class="pet-header">
+          <span class="pet-name">伯恩山 · 毛毛</span>
+          <span class="pet-level" id="pet-level">Lv.1</span>
+          <div class="pet-badges">
+            <button class="chip-btn" id="btn-signin">📅 签到</button>
+            <button class="chip-btn" id="btn-shop">🛍 商城</button>
+            <button class="chip-btn" id="btn-backpack">🎒 背包</button>
+          </div>
+        </div>
+        <div class="pet-stage" id="pet-stage"></div>
+        <div class="pet-stats" id="pet-stats">
+          <div class="stat-row"><span class="stat-label">🍖 饥饿</span><div class="bar"><i id="bar-hunger"></i></div><span class="stat-num" id="num-hunger">100</span></div>
+          <div class="stat-row"><span class="stat-label">😊 心情</span><div class="bar"><i id="bar-mood"></i></div><span class="stat-num" id="num-mood">100</span></div>
+          <div class="stat-row"><span class="stat-label">🛁 清洁</span><div class="bar"><i id="bar-clean"></i></div><span class="stat-num" id="num-clean">100</span></div>
+        </div>
+        <div class="pet-actions">
+          <button class="chip-btn act" id="btn-feed">🍖 喂食</button>
+          <button class="chip-btn act" id="btn-pet">🤚 抚摸</button>
+          <button class="chip-btn act" id="btn-clean">🛁 清洁</button>
+          <label class="anim-toggle" title="学习时隐藏宠物动画">
+            <input type="checkbox" id="toggle-anim" checked> 动画
+          </label>
+        </div>
+        <div class="exam-corner" id="exam-corner" hidden></div>
+      </section>
+
+      <section class="home-zone page" id="page-home">
+        <h2 class="zone-title">📊 本周学习看板</h2>
+        <div id="weekly-view"></div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="mobile-tabs" id="mobile-tabs">
+    <button class="mob-btn active" data-page="learn">📖 学习</button>
+    <button class="mob-btn" data-page="pet">🐕 宠物</button>
+    <button class="mob-btn" data-page="home">📊 周报</button>
+    <button class="mob-btn" data-page="settings">⚙ 设置</button>
+  </nav>
+
+  <div class="panel settings-panel" id="panel-settings" hidden>
+    <div class="panel-head">
+      <h2>⚙ 设置</h2>
+      <button class="icon-btn close" data-close="panel-settings" aria-label="关闭">✕</button>
+    </div>
+    <div class="panel-body">
+      <h3>主题配色</h3>
+      <div class="theme-row" id="theme-row">
+        <button class="theme-dot active" data-theme="default" title="奶油">奶油</button>
+        <button class="theme-dot" data-theme="mint" title="薄荷">薄荷</button>
+        <button class="theme-dot" data-theme="night" title="夜读">夜读</button>
+        <button class="theme-dot" data-theme="pink" title="蜜桃">蜜桃</button>
+      </div>
+
+      <h3>学习偏好</h3>
+      <label class="set-row"><span>音效开关</span><input type="checkbox" id="set-sound"></label>
+      <label class="set-row"><span>宠物动画</span><input type="checkbox" id="set-anim"></label>
+      <label class="set-row"><span>四级考试日期</span><input type="date" id="set-exam-date"></label>
+      <label class="set-row"><span>番茄默认时长(分钟)</span><input type="number" id="set-pomo-len" min="1" max="120"></label>
+
+      <h3>白噪音</h3>
+      <div class="noise-row" id="noise-type-row">
+        <button class="chip-btn sm" data-noise="rain">🌧 雨声</button>
+        <button class="chip-btn sm" data-noise="cafe">☕ 咖啡馆</button>
+        <button class="chip-btn sm" data-noise="music">🎵 轻音乐</button>
+        <button class="chip-btn sm" data-noise="off">🔇 关闭</button>
+      </div>
+      <label class="set-row"><span>音量</span><input type="range" id="set-noise-vol" min="0" max="100"></label>
+
+      <h3>数据存档</h3>
+      <div class="btn-row">
+        <button class="chip-btn" id="btn-export">📤 导出存档</button>
+        <button class="chip-btn" id="btn-import">📥 导入存档</button>
+        <input type="file" id="import-file" accept="application/json" hidden>
+      </div>
+      <h3>高危操作</h3>
+      <div class="btn-row danger">
+        <button class="chip-btn danger" data-danger="clear-words">清空单词记录</button>
+        <button class="chip-btn danger" data-danger="clear-tasks">删除全部任务</button>
+        <button class="chip-btn danger" data-danger="reset-pet">重置宠物数据</button>
+        <button class="chip-btn danger" data-danger="clear-backpack">清空背包</button>
+      </div>
+      <p class="footnote">所有数据仅保存在本设备浏览器中，请定期导出存档备份。</p>
+    </div>
+  </div>
+
+  <div class="panel shop-panel" id="panel-shop" hidden></div>
+  <div class="panel backpack-panel" id="panel-backpack" hidden></div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="data/cet4-words.js"></script>
+<script src="js/cet4.js"></script>
+<script src="js/tasks.js"></script>
+<script src="js/pomodoro.js"></script>
+<script src="js/shop.js"></script>
+<script src="js/achievements.js"></script>
+<script src="js/pet.js"></script>
+<script src="js/weekly.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
